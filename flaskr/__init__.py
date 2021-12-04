@@ -5,9 +5,10 @@ from flask import Flask
 def create_app(test_config=None):
     #アプリの作成＆構成
     app = Flask(__name__, instance_relative_config=True)
-    app.config.form_mapping(
+    app.config.from_mapping(
         SECRET_KEY = "dev",
         DATABASE = os.path.join(app.instance_path, "flaskr.sqlite"),
+        ## app.instance_path Flaskがインスタンスフォルダとして選んだdirのパス
     )
 
     if test_config is None:
