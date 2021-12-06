@@ -30,9 +30,18 @@ def init_db():
      with current_app.open_resource("schema.sql") as f:
          db.executescript(f.read().decode("utf8"))
 
+# init_db関数を呼び出すコマンドラインのコマンドinit-dbを定義し、成功メッセージを表示
 @click.command("init-db")
 @with_appcontext
 def init_db_command():
     """存在するデータを消して, 新しい表を作成する"""
     init_db()
     click.echo("Initialized the database.")
+
+
+
+# 上の関数の中でclose_db()とinit_db_command()はアプリケーションとの接続がないので
+# アプリケーションを取得し, アプリケーションインスタンスへの登録を行う必要がある
+def  init_app(app):
+    app.teardown_appcontext(close_db)
+    app.cli.add_command(init_db_command)
