@@ -43,5 +43,6 @@ def init_db_command():
 # 上の関数の中でclose_db()とinit_db_command()はアプリケーションとの接続がないので
 # アプリケーションを取得し, アプリケーションインスタンスへの登録を行う必要がある
 def  init_app(app):
+    # teardown_appcontexth : init_appの処理が終わったら引数(close_db)の実行を行う、と定義
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
