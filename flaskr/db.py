@@ -8,13 +8,13 @@ def get_db():
     if "db" not in g:
         # "DATABASE"で示されたファイルとのコネクションをつくる. 
         # そのファイルはこの段階で存在する必要はなく, あとでinitializeするまでその状態は続く.
-        g.db = splite3.connect(
+        g.db = sqlite3.connect(
             # currnet_appはdb.pyをインポートしたプログラムを示すってことか？
             current_app.config["DATABASE"],
             detect_types = sqlite3.PARSE_DECLTYPES
         )
         # 列名での参照ができるようにコネクションを確立.
-        get_db.row_factory = splite3.Row
+        get_db.row_factory = sqlite3.Row
 
     return g.db
 
