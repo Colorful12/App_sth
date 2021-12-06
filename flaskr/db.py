@@ -27,8 +27,8 @@ def close_db(e=None):
 
 def init_db():
     db = get_db()
-     with current_app.open_resource("schema.sql") as f:
-         db.executescript(f.read().decode("utf8"))
+    with current_app.open_resource("schema.sql") as f:
+        db.executescript(f.read().decode("utf8"))
 
 # init_db関数を呼び出すコマンドラインのコマンドinit-dbを定義し、成功メッセージを表示
 @click.command("init-db")
