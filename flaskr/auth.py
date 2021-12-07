@@ -57,7 +57,7 @@ def login():
 
         if user is None:
             error = "登録されていないユーザーネームが入力されています."
-        elif not check_password_hash(user["password"], password)
+        elif not check_password_hash(user["password"], password):
             error = "パスワードが違います."
         
         if error is None:
