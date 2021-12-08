@@ -14,7 +14,7 @@ def get_db():
             detect_types = sqlite3.PARSE_DECLTYPES
         )
         # 列名での参照ができるようにコネクションを確立.
-        get_db.row_factory = sqlite3.Row
+        g.db.row_factory = sqlite3.Row
 
     return g.db
 
