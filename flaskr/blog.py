@@ -39,8 +39,8 @@ def create():
             db = get_db()
             db.execute(
                 "INSERT INTO post (title, body, author_id)"
-                "VALUES (?, ?, ?)"
-                (titile, body, g.user["id"])
+                "VALUES (?, ?, ?)",
+                (title, body, g.user["id"])
             )
             db.commit()
             return redirect(url_for("blog.index"))
@@ -101,4 +101,3 @@ def delete(id):
     db.execute("DELETE FROM post WHERE id = ?", (id,))
     db.commit()
     return redirect(url_for("blog.index"))
-    
