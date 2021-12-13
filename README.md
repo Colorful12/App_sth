@@ -1,3 +1,4 @@
-# App_sth
+# Flaskr-plus
 
-名称未定。
+Flaskチュートリアル用リポジトリ.
+チュートリアルで作成するFlaskrに
