@@ -20,3 +20,32 @@ def index():
     ).fetchall()
     return render_template("blog/index.html", posts=posts)
 
+
+@bp.route("/create", methods=("GET", "POST"))
+@login_required
+# login_requiredデコレータはblogビューで使われる.
+def create():
+    if request.method == "POST":
+        title = request.form["title"]
+        body = request.form["body"]
+        error = None
+
+        if not title:
+            error = "記事のタイトルを入力してください."
+        
+        if error is not None:
+            flash(error)
+        else:
+            db = get_db()
+            db.execute(
+                "INSERT INTO post (title, body, author_id)"
+                "VALUES (?, ?, ?)"
+                (titile, body, g.user["id"])
+            )
+            db.commit()
+            return redirect(url_for("blog.index"))
+    
+    return render_template("blog/create.html")
+
+
+
