@@ -1,0 +1,4 @@
+Flaskは flaskr/static ディレクトリに相対的なパスをとる static ビューを自動的に生成する.
+style.cssへのリンクはbase.htmlに記述されている.
+
+static ディレクトリは, cssファイルやロゴ画像やJSファイルなどの静的ファイルを入れるところである. 
